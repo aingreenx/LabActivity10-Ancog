@@ -12,17 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            //
+            $table->unsignedInteger('views')->default(0)->after('body');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            //
+            $table->dropColumn('views');
         });
     }
+    
 };
